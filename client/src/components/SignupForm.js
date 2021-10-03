@@ -16,13 +16,30 @@ const SignupForm = () => {
 
   const [addUser] = useMutation(ADD_USER);
 
+  // useEffect(() => {
+  //   if (error) {
+  //     setShowAlert(true);
+  //   } else {
+  //     setShowAlert(false);
+  //   }
+  // }, [error]);
+
   const handleInputChange = (event) => {
     const { name, value } = event.target;
-    setUserFormData({ ...userFormData, [name]: value });
+    setUserFormData({
+      ...userFormData,
+      [name]: value
+    });
   };
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
+
+    // const form = event.currentTarget;
+    // if (form.checkValidity() === false) {
+    //   event.preventDefault();
+    //   event.stopPropagation();
+    // }
 
     try {
       const { data } = await addUser({
